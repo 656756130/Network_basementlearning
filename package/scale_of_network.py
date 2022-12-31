@@ -20,6 +20,11 @@ def NDNW_average_degree(G):
     number_of_nodes = G.number_of_nodes()
     average_degree = (2*number_of_edges)/number_of_nodes
     return average_degree
+def DNW_average_degree(G):
+    number_of_edges = G.number_of_edges()
+    number_of_nodes = G.number_of_nodes()
+    average_degree = (number_of_edges)/number_of_nodes
+    return average_degree
 
 def catagory_of_network(G):
     av = NDNW_average_degree(G)
@@ -34,3 +39,11 @@ def catagory_of_network(G):
         print("该网络为连通状态网络")
     else:
         print("ERROR,PLEASE CHECK YOUR GRAPH!")
+
+def NDNW_network_diameter(G):
+    dmax = np.log(G.number_of_nodes())/np.log(NDNW_average_degree(G))
+    return dmax
+
+def DNW_network_diameter(G):
+    dmax = np.log(G.number_of_nodes())/np.log(DNW_average_degree(G))
+    return dmax
