@@ -24,3 +24,22 @@ def draw_DD(k,p_k,bar_width=0.5,color="red",xlabel="$k$",ylabel="$p_k$",xlim1=0,
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.xlim([xlim1,xlim2])
+
+def log_graph_with_zero(x,y,x_label='num',y_label='prob',color='r'):
+    plt.plot(x, y, 'o-', color=color)
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.grid()
+    plt.show()
+
+def log_graph_without_zero(x,y,x_label='num',y_label='prob',color='r'):
+    new_x = []
+    new_y = []
+    # 删除0值
+    for i in range(len(x)):
+        if y[i] != 0:
+            new_x.append(x)
+            new_y.append(y)
+    log_graph_with_zero(new_x,new_y,x_label=x_label,y_label=y_label,color='g')
