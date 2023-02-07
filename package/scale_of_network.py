@@ -1,5 +1,6 @@
 import networkx as nx
 import numpy as np
+import scipy as sp
 
 
 def distribution_of_degree(G):   #
@@ -47,3 +48,8 @@ def NDNW_network_diameter(G):
 def DNW_network_diameter(G):
     dmax = np.log(G.number_of_nodes())/np.log(DNW_average_degree(G))
     return dmax
+
+def natural_cutoff(G,func,kmin):
+    number_of_nodes = G.number_of_nodes()
+    result = sp.integrate.quad(func,kmin,np.pi)
+    return result
